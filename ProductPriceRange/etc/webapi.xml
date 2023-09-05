@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2023.
+  ~ Fred Nguyen
+  ~ email: fred.nguyen.17@gmail.com
+  -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/product-by-price-range" method="POST">
+        <service class="Frednguyen\ProductPriceRange\Api\PriceRangeProductManagementInterface" method="getProducts"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

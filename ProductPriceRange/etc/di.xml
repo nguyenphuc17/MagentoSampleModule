@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2023.
+  ~ Fred Nguyen
+  ~ email: fred.nguyen.17@gmail.com
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Frednguyen\ProductPriceRange\Api\PriceRangeProductManagementInterface"
+            type="Frednguyen\ProductPriceRange\Model\PriceRangeProductManagement" />
+    <preference for="Frednguyen\ProductPriceRange\Api\Data\PriceRangeProductInterface"
+                type="Frednguyen\ProductPriceRange\Model\PriceRangeProduct" />
+</config>

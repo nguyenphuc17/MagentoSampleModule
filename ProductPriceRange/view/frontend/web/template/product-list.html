@@ -1,0 +1,91 @@
+<!--
+  ~ Copyright (c) 2023.
+  ~ Fred Nguyen
+  ~ email: fred.nguyen.17@gmail.com
+  -->
+
+<div class="productpricerange-wrapper" data-block="productpricerange">
+    <form class="form subscribe" id="price-range"
+          method="post"
+          data-bind="mageInit: {'validation': {}}, submit:getListProduct"
+    >
+        <div class="field price-range">
+            <div class="control">
+                <label for="min_price">
+                        <span class="label" data-bind="i18n:'Low Range'"></span>
+                    <input name="min_price" type="text" id="min_price"
+                           data-bind="value: minPrice"
+                           data-validate="{required:true,number:true,'not-negative-amount':true}" />
+                </label>
+            </div>
+            <div class="control">
+                <label for="max_price">
+                    <span class="label" data-bind="i18n:'High Range'"></span>
+                    <input name="max_price" type="text" id="max_price"
+                           data-bind="value: maxPrice"
+                           data-validate="{required:true,number:true,'not-negative-amount':true, 'validate-highest-price':'#min_price'}" />
+                </label>
+            </div>
+            <div class="control">
+                <label class="label">
+                    <span class="label" data-bind="i18n:'Sort by Price'"></span>
+                </label>
+                <div class="options-list">
+                    <div class="field choice">
+                        <input type="radio" checked class="radio" id="sort_order_asc" name="sort_order" value="asc"
+                               data-bind="checked: sortOrder"
+                        >
+                        <label class="label" for="sort_order_asc">
+                            <span class="label" data-bind="i18n:'Low to High'"></span>
+                        </label>
+                    </div>
+                    <div class="field choice">
+                        <input type="radio" class="radio" id="sort_order_desc" name="sort_order" value="desc"
+                               data-bind="checked: sortOrder"
+                        >
+                        <label class="label" for="sort_order_desc">
+                            <span class="label" data-bind="i18n:'High to Low'"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="actions">
+            <button class="action subscribe primary"
+                    type="submit"
+                    aria-label="Search">
+                <span data-bind="i18n:'Search'"></span>
+            </button>
+            <button class="action reset"
+                    type="button"
+                    aria-label="Reset" data-bind="click:resetForm()">
+                <span data-bind="i18n:'Reset'"></span>
+            </button>
+        </div>
+    </form>
+    <table data-bind="if: products().length>0">
+        <thead>
+        <th data-bind="i18n: 'Image'"></th>
+        <th data-bind="i18n: 'Name'"></th>
+        <th data-bind="i18n: 'SKU'"></th>
+        <th data-bind="i18n: 'QTY'"></th>
+        <th data-bind="i18n: 'Price'"></th>
+        <th>&nbsp;</th>
+        </thead>
+        <tbody data-bind="foreach: products">
+        <tr>
+            <td><a target="_blank" data-bind="attr:{href: product_url}"><img width="80px" data-bind="attr:{src: product_thumbnail}"></a></td>
+            <td>
+                <b><a target="_blank" data-bind="attr:{href: product_url}, html:product_name"></a></b>
+            </td>
+            <td data-bind="text: product_sku"></td>
+            <td data-bind="text:qty"></td>
+            <td data-bind="text: price"></td>
+            <td><a target="_blank" data-bind="attr:{href: product_url}, i18n:'Go to Product'"></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div data-bind="i18n:notFoundTxt"></div>
+</div>
+
